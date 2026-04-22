@@ -1,0 +1,23 @@
+<div class="screen">
+  <div class="property">
+    <form [formGroup]="propertyForm">
+      <div >
+        <label for="numberOfCases">Nombre de cases</label>
+        <input type="number" id="numberOfCases" formControlName="numberOfCases" min="1" max="20">
+      </div>
+    </form>
+  </div>
+  <div class="board-container">
+    <div class="game-board">
+      @for (row of rows; track row) {
+        <div class="row">
+          @for (col of cols; track col) {
+            <app-case [index]="[row, col]"></app-case>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+

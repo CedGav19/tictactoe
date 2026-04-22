@@ -1,0 +1,9 @@
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.case {
+  flex: 1;
+  border: 2px solid black;
+}
