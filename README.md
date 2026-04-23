@@ -8,6 +8,7 @@ installation des nodes modules
 ```bash
 npm install
 ```
+lancement de l'application
 ```bash
 npm start
 ```
