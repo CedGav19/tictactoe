@@ -29,3 +29,39 @@
   width: 100%;
   flex: 1;
 }
+.state-game{
+  display: flex;
+}
+
+.button-layer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding:2rem  ;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: ghostwhite;
+}
+.input-form{
+  display: flex;
+  gap :10px
+}
+
+@media (max-width: 768px) {
+  .screen {
+    flex-direction: column;
+  }
+  .property {
+    height: auto;
+  }
+  .game-board {
+    width: 90%;
+  }
+}

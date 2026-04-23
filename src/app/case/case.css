@@ -7,3 +7,17 @@
   flex: 1;
   border: 2px solid black;
 }
+
+.case.croix {
+  background-image: url('/croix.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.case.rond {
+  background-image: url('/rond.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

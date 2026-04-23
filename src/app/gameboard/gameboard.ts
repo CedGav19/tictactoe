@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { Case } from '../case/case';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { GameLogique } from '../game-logique';
+import {submit} from '@angular/forms/signals';
 
 @Component({
   selector: 'app-gameboard',
@@ -8,29 +10,21 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './gameboard.html',
   styleUrl: './gameboard.css',
 })
-export class Gameboard implements OnInit {
+export class Gameboard {
 
-  rows :number[] = [0,1,2]
-  cols :number[] = [0,1,2]
+  constructor(protected gameLogique: GameLogique) {
+  }
   propertyForm = new FormGroup({
     numberOfCases: new FormControl(3, {nonNullable: true}),
+    symbol: new FormControl<'croix' | 'rond'>('croix', {nonNullable: true}),
   });
 
-  ngOnInit() {
-    this.propertyForm.controls.numberOfCases.valueChanges.subscribe(
-      value => {
-        for (let i = 0 ; i < value; i++) {
-          this.rows[i] = i;
-          this.cols[i] = i;
-        }
-      }
-    )
+  onSubmit() {
+    this.gameLogique.reset(
+      this.propertyForm.controls.numberOfCases.value,
+      this.propertyForm.controls.symbol.value,
+    );
   }
-  verifyWin(){
-    //todo : verif si toutes les cases d'une ligne/col ou d'une diagonale (att 2 sens ) appart a un joeuru
-    //todo : ligne
-    //todo : colonne
-    //todo : diag
-    //todo : autre dia
-  }
+
+  protected readonly submit = submit;
 }

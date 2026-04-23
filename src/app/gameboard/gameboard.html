@@ -1,23 +1,42 @@
 <div class="screen">
   <div class="property">
-    <form [formGroup]="propertyForm">
-      <div >
-        <label for="numberOfCases">Nombre de cases</label>
+    <form class="form" [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+      <div class="input-form">
+        <label for="numberOfCases">Nombre de cases : </label>
         <input type="number" id="numberOfCases" formControlName="numberOfCases" min="1" max="20">
       </div>
+      <div>
+        <label>
+          <input type="radio" formControlName="symbol" value="croix">
+          Croix
+        </label>
+        <label>
+          <input type="radio" formControlName="symbol" value="rond">
+          Rond
+        </label>
+      </div>
+      <div class="button-layer">
+      <button type="submit">Valider</button>
+        <button (click)="onSubmit()">Recommencer</button>
+      </div>
     </form>
+    <div class="form">
+    <p class="state-game">Joueur : {{gameLogique.playerWins}}<br>Ordinateur : {{gameLogique.computerWins}}</p>
+    @if (gameLogique.winner) {
+      <p class="state-game">Vainqueur : {{ gameLogique.winner }}</p>
+    }
+    </div>
   </div>
   <div class="board-container">
+
     <div class="game-board">
-      @for (row of rows; track row) {
+      @for (row of gameLogique.board; track $index; let i = $index) {
         <div class="row">
-          @for (col of cols; track col) {
-            <app-case [index]="[row, col]"></app-case>
+          @for (cell of row; track $index; let j = $index) {
+            <app-case [row]="i" [col]="j"></app-case>
           }
         </div>
       }
     </div>
   </div>
 </div>
-
-

@@ -1,1 +1,1 @@
-<div class="case" (click)="onClick()"></div>
+<div class="case" [class.croix]="state === 'croix'" [class.rond]="state === 'rond'" (click)="onClick()"></div>
